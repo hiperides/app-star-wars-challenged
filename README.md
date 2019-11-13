@@ -5,9 +5,13 @@ Este projeto foi criado com o [Angular CLI](https://github.com/angular/angular-c
 ## Tecnologias Utilizadas
 
 Angular CLI - Versão 8.3.18.
-Node.js - Versão 13.1.0
-Bootstrap - Versão 4.3.1
-jquery - Versão 3.4.1
+Node.js - Versão 13.1.0.
+Bootstrap - Versão 4.3.1.
+jquery - Versão 3.4.1.
+
+## NPM
+
+Utilize o comando `npm install`
 
 ## Servidor de Desenvolvimento
 
