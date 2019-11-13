@@ -1,0 +1,36 @@
+<div class="banner"></div>
+<div class="container">
+    <div class="row" style="margin-bottom: 50px" *ngIf="naves; else loading">
+        <div class="card-body">
+            <h2 class="card-title">{{ naves.name }}</h2>
+            <h3 class="card-title">
+                Informações da Nave (Spaceship)</h3>
+            <ul>
+                <li>Model: {{ naves.model }}</li>
+                <li>Manufacturer: {{ naves.manufacturer }}</li>
+                <li>Cost in credits: {{ naves.cost_in_credits }}</li>
+                <li>Length: {{ naves.length }}</li>
+                <li>Max atmosphering speed: {{ naves.max_atmosphering_speed }}</li>
+                <li>Crew: {{ naves.crew }}</li>
+                <li>Passengers: {{ naves.passengers }}</li>
+                <li>Cargo capacity: {{ naves.cargo_capacity }}</li>
+                <li>Consumables: {{ naves.consumables }}</li>
+                <li>Hyperdrive rating: {{ naves.hyperdrive_rating }}</li>
+                <li>MGLT: {{ naves.MGLT }}</li>
+                <li>Starship class: {{ naves.starship_class }}</li>
+            </ul>
+            <h3 class="card-title" *ngIf="naves.pilots.length">Pilotos</h3>
+            <ul *ngIf="naves.pilots.length">
+                <li *ngFor="let piloto of naves.pilots">{{ piloto.name }}</li>
+            </ul>
+            <h3 class="card-title">Filmes</h3>
+            <ul>
+                <li *ngFor="let filme of naves.films">{{ filme }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <br/><h3 class="text-center">Carregando. Aguarde...</h3>
+</ng-template>

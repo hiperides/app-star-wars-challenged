@@ -1,0 +1,32 @@
+<div class="banner"></div>
+<div class="container">
+    <div class="row" style="margin-bottom: 50px" *ngIf="planetas; else loading">
+        <div class="card-body">
+            <h2 class="card-title">{{ planetas.name }}</h2>
+            <h3 class="card-title">Informações do Planeta</h3>
+            <ul>
+                <li>Height: {{ planetas.rotation_period }}</li>
+                <li>Mass: {{ planetas.orbital_period }}</li>
+                <li>Hair color: {{ planetas.diameter }}</li>
+                <li>Skin color: {{ planetas.climate }}</li>
+                <li>Eye color: {{ planetas.gravity }}</li>
+                <li>Birth year: {{ planetas.terrain }}</li>
+                <li>Gender: {{ planetas.surface_water }}</li>
+                <li>Gender: {{ planetas.population }}</li>
+            </ul>
+            <h3 class="card-title" *ngIf="planetas.residents.length">Habitantes</h3>
+            <ul *ngIf="planetas.residents.length">
+                <li *ngFor="let personagem of planetas.residents">{{ personagem.name }}</li>
+            </ul>
+            <h3 class="card-title" *ngIf="planetas.films.length">Filmes</h3>
+            <ul *ngIf="planetas.films.length">
+                <li *ngFor="let filme of planetas.films">{{ filme }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <br/>
+    <h3 class="text-center">Carregando. Aguarde...</h3>
+</ng-template>

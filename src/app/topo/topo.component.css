@@ -1,0 +1,20 @@
+.menu {
+    background: black;
+    text-align: center;
+}
+
+.nav-link {
+    color: #C1E4FF
+}
+
+.nav-link:hover{
+    color: #FFF
+}
+
+.body{
+    background-image: url("/assets/banners/background-stars.png");
+}
+
+.active {
+    color: #FFF 
+}

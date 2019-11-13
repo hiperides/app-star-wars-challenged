@@ -1,0 +1,16 @@
+<nav class="nav justify-content-center" *ngIf="isPagination">
+    <ul class="pagination">
+        <li class="page-item disabled" [class.disabled]="rootObjeto.previous === null"
+            (click)="rootObjeto.previous === null ? '' : listar(paginaAtual - 1)">
+            <a class="page-link">Back</a>
+        </li>
+        <li class="page-item active" [class.active]="number === paginaAtual" *ngFor="let number of numbersPagination"
+            (click)="listar(number)">
+            <a class="page-link">{{number}}</a>
+        </li>
+        <li class="page-item disabled" [class.disabled]="rootObjeto.next === null"
+            (click)="rootObjeto.next === null ? '' : listar(paginaAtual + 1)">
+            <a class="page-link">Next</a>
+        </li>
+    </ul>
+</nav>

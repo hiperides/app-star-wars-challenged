@@ -1,0 +1,45 @@
+<div class="banner">
+        <img src="/assets/banners/planetas.gif" />
+</div>
+<div class="container">
+
+        <div class="secao">
+                <h3 class="text-center">Planetas</h3>
+                <h5 class="text-center">Explore lugares maravilhosos por toda a galáxia</h5>
+        </div>
+
+        <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                        <input type="text"
+                        class="form-control"
+                        placeholder="Pesquise por planetas..."
+                        #termoDaPesquisa
+                        (keyup)="pesquisarPlanetas(termoDaPesquisa.value)"
+                        />
+                </div>
+                <div class="col-md-4"></div>
+        </div>
+        
+        <hr />
+
+        <div class="row" style="margin-bottom: 50px" *ngIf="rootPlanetas; else loading">
+                <div class="col-sm-4" *ngFor="let planeta of rootPlanetas.results">
+                        <div class="card">
+                                <div class="card-block">
+                                        <h4 class="card-title">{{ planeta.name }}</h4>
+                                        <a [routerLink]="['/planetas', planeta.id]" class="btn btn-primary">Detalhes</a>
+                                </div>
+                        </div><br />
+                </div>
+                <hr />
+        </div>
+
+        <app-paginacao [isPagination]="isPagination" [rootObjeto]="rootPlanetas" (listarObjetos)="listarPlanetas($event)"
+                [paginaAtual]="paginaAtual" [numbersPagination]="numbersPagination"></app-paginacao>
+
+        <ng-template #loading>
+                <br/>
+                <h3 class="text-center">Carregando. Aguarde...</h3>
+        </ng-template>
+</div>

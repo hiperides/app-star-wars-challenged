@@ -1,0 +1,45 @@
+<div class="banner"></div>
+<div class="container">
+    <div class="row" style="margin-bottom: 50px" *ngIf="personagens; else loading">
+        <div class="card-body">
+            <h2 class="card-title">{{ personagens.name }}</h2>
+            <h3 class="card-title">Informação do Personagem</h3>
+            <ul>
+                <li>Height: {{ personagens.height }}</li>
+                <li>Mass: {{ personagens.mass }}</li>
+                <li>Hair color: {{ personagens.hair_color }}</li>
+                <li>Skin color: {{ personagens.skin_color }}</li>
+                <li>Eye color: {{ personagens.eye_color }}</li>
+                <li>Birth year: {{ personagens.birth_year }}</li>
+                <li>Gender: {{ personagens.gender }}</li>
+            </ul>
+            <h3 class="card-title">Terra Natal</h3>
+            <ul>
+                <li>{{ personagens.homeworld.name }}</li>
+            </ul>
+            <h3 class="card-title">Filmes</h3>
+            <ul>
+                <li *ngFor="let filme of personagens.films">{{ filme }}</li>
+            </ul>
+            <h3 class="card-title" *ngIf="personagens.species.name">Espécies</h3>
+            <ul *ngIf="personagens.species.name">
+                <li>{{ personagens.species.name }}</li>
+                <li>Language: {{ personagens.species.language }}</li>
+            </ul>
+            <h3 class="card-title" *ngIf="personagens.vehicles.length">Veículos</h3>
+            <ul *ngIf="personagens.vehicles.length">
+                <li *ngFor="let veiculo of personagens.vehicles">{{ veiculo.name }} - <b>Model: </b>{{veiculo.model}}
+                </li>
+            </ul>
+            <h3 class="card-title" *ngIf="personagens.starships.length">Naves</h3>
+            <ul *ngIf="personagens.starships.length">
+                <li *ngFor="let nave of personagens.starships">{{ nave }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <br />
+    <h3 class="text-center">Carregando. Aguarde...</h3>
+</ng-template>
