@@ -47,7 +47,15 @@ export class PlanetasComponent implements OnInit, OnDestroy {
   public pesquisarPlanetas(termoDaBusca: string): void {
     this.planetas = this.planetasService.pesquisaPlanetas(termoDaBusca)
 
-    this.planetas.subscribe((planetas: RootPlanetas) => console.log(planetas.results))
+    this.planetas.subscribe((planetas: RootPlanetas) => {
+      this.rootPlanetas = planetas
+      this.extrairId();
+      this.isPagination = planetas.count > 10;
+        if (this.isPagination) {
+          this.criaArray(Math.ceil(planetas.count / 10));
+          this.paginaAtual = 1;
+        }
+    })
   }
 
   private criaArray(value): void {

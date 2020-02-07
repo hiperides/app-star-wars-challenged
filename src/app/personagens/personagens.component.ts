@@ -46,7 +46,15 @@ export class PersonagensComponent implements OnInit, OnDestroy {
   public pesquisarPersonagens(termoDaBusca: string): void {
     this.personagens = this.personagensService.pesquisaPersonagens(termoDaBusca)
 
-    this.personagens.subscribe((personagens: RootPersonagens) => console.log(personagens.results))
+    this.personagens.subscribe((personagens: RootPersonagens) => {
+      this.rootPersonagens = personagens
+      this.extrairId();
+      this.isPagination = personagens.count > 10;
+        if (this.isPagination) {
+          this.criaArray(Math.ceil(personagens.count / 10));
+          this.paginaAtual = 1;
+        }
+    })
   }
 
   private extrairId(): void {

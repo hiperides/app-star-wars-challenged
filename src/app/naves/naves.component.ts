@@ -45,7 +45,15 @@ export class NavesComponent implements OnInit, OnDestroy {
   public pesquisarNaves(termoDaBusca: string): void {
     this.naves = this.navesService.pesquisaNaves(termoDaBusca)
 
-    this.naves.subscribe((naves: RootNaves) => console.log(naves.results))
+    this.naves.subscribe((naves: RootNaves) => {
+      this.rootNaves = naves
+      this.extrairId();
+      this.isPagination = naves.count > 10;
+        if (this.isPagination) {
+          this.criaArray(Math.ceil(naves.count / 10));
+          this.paginaAtual = 1;
+        }
+    })
   }
 
   private extrairId(): void {
